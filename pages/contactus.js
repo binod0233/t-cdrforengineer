@@ -246,7 +246,7 @@ const ContactUs = () => {
               }}
             >
               <a
-                href="https://api.whatsapp.com/send?phone=61482072510"
+                href="https://api.whatsapp.com/send?phone=61482070521"
                 target="_blank"
                 rel="noreferrer"
                 style={{ textDecoration: "none", color: "white" }}

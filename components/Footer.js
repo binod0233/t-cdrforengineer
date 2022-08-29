@@ -32,7 +32,7 @@ const Footer = () => {
           <br />
           <a
             style={{ textDecoration: "none", color: "white" }}
-            href="https://api.whatsapp.com/send?phone=61482072510"
+            href="https://api.whatsapp.com/send?phone=61482070521"
 
           >
             +61 482 072 510
