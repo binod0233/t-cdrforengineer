@@ -1,27 +1,42 @@
 import { Container, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
 import TextParagraph from "../TextParagraph";
+import parse from "html-react-parser";
 
-const RelyOn = () => {
+const RelyOn = ({ data }) => {
+  const { stage, content } = data;
   return (
     <Container>
+      <h2
+        className="stage1Heading"
+        style={{
+          fontSize: "34px",
+          fontFamily: "Cambria",
+          color: "#370C64",
+          fontWeight: "700",
+          marginTop: "50px",
+          padding: "0 100px",
+        }}
+      >
+        {stage?.title}
+      </h2>
       <Row className="py-4 ">
         <img
-          src="/images/rely-on.jpg"
+          src={stage?.image?.data?.attributes?.url}
           alt="Stage 1 Competency Assessment service provider for Engineers Australia"
         />
       </Row>
       <Row>
-        <PurpleHeading title="Stage 1 Competency Assessment service provider for Engineers Australia" />
+        <PurpleHeading title={content[0]?.title} />
         <TextParagraph
-          content="CDR For Engineer, based in Australia itself, offers professional Engineers with years of experience to assist you on Stage 1 Competency Assessment for Engineers Australia’s membership and National Registers. We are willing  to  review  and  revise  your  CDR  to ensure  that Engineers  Australia  will  assess  your  report. Professional writers from an engineering background with years of experience in CDR report writing make us the best stage 1 Competency Assessment service provider in Australia."
           family="Arial"
+          content={content[0]?.paragraph && parse(content[0].paragraph)}
         />
 
-        <PurpleHeading title="What is Stage 1 Competency Assessment for Engineers" />
+        <PurpleHeading title={content[1]?.title} />
         <TextParagraph
-          content="Stage  1  Competency  Assessment  is  the  level  of  competency  needed  for  entry  to  practice  as  a  qualified member of the engineering team. Candidates writing CDR  holding engineering qualifications from overseas countries  which Engineers Australia  does  not  recognise have  to  show  their  competency through  Stage  1 assessment. Stage  1  competency  means  the professional has  a  thorough  knowledge  of  the  body  of engineering knowledge relevant to their occupational category.Stage 1 Competency Assessment is a CDR skill assessment for persons seeking recognition as eligible for membership  with  Engineers  Australia. Professionals  with  engineering  knowledge  applicable  to the occupational category as Engineering Technologist, Professional Engineer, or Engineering Associate need Stage 1 competency Assessment.Stage 1 Competency Assessment is also required for candidates holding Australian engineering qualifications that have not been accredited or approved by Engineers Australia. Each occupational category’s stage 1 competency Assessment standard consists of the following  three competencies"
           family="Arial"
+          content={content[1]?.paragraph && parse(content[1].paragraph)}
         />
       </Row>
       <Row className="d-flex justify-content-center align-items-center my-4">
