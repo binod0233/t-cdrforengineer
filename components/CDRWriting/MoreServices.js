@@ -1,7 +1,8 @@
 import { Container, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
+import parse from "html-react-parser";
 
-const MoreServices = () => {
+const MoreServices = ({ data }) => {
   const moreServices = [
     {
       title:
@@ -36,77 +37,26 @@ const MoreServices = () => {
     mentioned in the MSA booklet.`,
     },
   ];
+  const { whatOther, image3, grab } = data;
   return (
     <Container>
-      <PurpleHeading title="What Other Services are Included in CDR Writing Services?" />
-      <p className="cdrWritingP">
-        CDR For Engineer always focuses on quality. We believe only quality brings
-        100% positive assessment, and with the quality, we can beat every
-        competitor in Australia. We have professional and expert writers who
-        provide all the writing documents in CDR Report Writing to maintain
-        quality.
-      </p>
+      <PurpleHeading title={whatOther?.title} />
+      <div className="cdrWritingP">
+        {whatOther?.paragraph && parse(whatOther.paragraph)}
+      </div>
 
-      <p className="cdrWritingP">
-        Suppose you are an engineer or a student looking to relocate to
-        Australia for better opportunities. In that case, we are here to help
-        with our most demanding services in CDRreport writing with accuracy and
-        100 % originality.
-      </p>
-      <p className="cdrWritingP">Know more about our demanding services:</p>
-
-      {moreServices.map((m, index) => (
-        <div key={index}>
-          <h5 className="moreServicesTitle">
-            <strong>{m.title}</strong>
-          </h5>
-          <p
-            className="cdrWritingP"
-            style={{ marginLeft: "30px", color: "#666666" }}
-          >
-            {m.paragraph}
-          </p>
-        </div>
-      ))}
       <Row className="px-5 py-4">
         <Row className="px-5">
-          {" "}
           <img
-            src="/images/high-quality-CDR.jpg"
-            alt="high-quality CDR Report"
+            src={image3?.data[0]?.attributes?.url}
+            alt={image3?.data[0]?.attributes?.alternativeText}
           />
         </Row>
       </Row>
-      <PurpleHeading title="Grab your high-quality CDR Report from CDR For Engineer." />
-      <p className="cdrWritingP">
-        Engineers who want to apply for a skilled migration visa to Australia
-        might use the CDR Report to demonstrate their abilities. CDR-Competency
-        Demonstration Report is the most crucial document for Aspirants who want
-        to make a career in Australia.
-      </p>
-      <p className="cdrWritingP">
-        We provide the best quality CDR Report Writing, KA02 Writing, ACS RPL
-        Report Writing, IPENZ New Zealand, NER Australia, and P.Eng Canada
-        services for engineers planning to migrate to Australia, New Zealand,
-        Canada, and other countries. CDR For Engineer is the leading service
-        provider of CDR Report writing services in Australia, ranking among the
-        top-rated CDR Report writing services for EA Engineers Australia. We
-        value quality and achieve100 % accurate positive assessment results.
-      </p>
-      <p className="cdrWritingP">
-        Weworkhard to deliver promise serviceto our clients. Many
-        engineeringclients have faith in us because of ourhigh-quality
-        services.Allof our clientshave profited from the CDR report writing
-        serviceswe provide. We have licensed professional engineers on theteam
-        to provide quality CDRreport writing services. We have a 100% approval
-        rate from relevant bodies in several countries.
-      </p>
-      <p className="cdrWritingP">
-        We worked along with fixed deadlines by following all the strict rules
-        and guidelines mentioned in the MSA booklet, which assists us in
-        preparing high-quality CDR reports that are consistently approved by
-        Engineers Australia (EA).
-      </p>
+      <PurpleHeading title={grab?.title} />
+      <div className="cdrWritingP">
+        {grab?.paragraph && parse(grab.paragraph)}
+      </div>
     </Container>
   );
 };

@@ -1,13 +1,14 @@
 import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 // import { useNavigate } from "react-router-dom";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 import PurpleHeading from "../PurpleHeading";
 import TextParagraph from "../TextParagraph";
 // import "./CareerEpisodeWriting.css";
+import parse from "html-react-parser";
 
-const AustraliaGuarantees = () => {
+const AustraliaGuarantees = ({ data }) => {
   const router = useRouter();
   const cardContent = [
     {
@@ -31,30 +32,17 @@ const AustraliaGuarantees = () => {
       data: `Time is a valuable asset. We understand the value of your time, we set appropriate deadlines for both ofus, and we adhere to them. Our expert writers work hard to deliver outstanding reports on time `,
     },
   ];
+  const { features, featuresData } = data;
   return (
     <div style={{ background: "#F8FCFF" }}>
       <Container>
         <Row>
           <Col md={6}>
-            <PurpleHeading title="Features of Engineers Australia Career Episode report writing services." />
+            <PurpleHeading title={features?.title} />
 
             <TextParagraph
               family="Arial"
-              content="We are renowned as Australia’s most successful CDR writing, 
-RPL writing and KA02 writing service provider.The intellectual 
-team of professional Writers, Experts, Engineers, IT Specialists, 
-etc. provides high-quality CDR Services to the applicants. We 
-help applicants from around the globe who want to migrate to 
-Australia as a skilled workforce.
-"
-            />
-            <TextParagraph
-              family="Arial"
-              content="
-Our team of writers possess many years of experience in this 
-field and are highly qualified personnel. We have almost a 100% 
-success rate until now. We guarantee an excellent quality CDR 
-Report with original content."
+              content={features?.paragraph && parse(features.paragraph)}
             />
 
             <Button
@@ -67,18 +55,21 @@ Report with original content."
           </Col>
           <Col md={6}>
             <Row>
-              {cardContent.map((c, index) => (
-                <Col md={6} key={index} className="p-4">
+              {featuresData.map((c, index) => (
+                <Col md={6} key={c.id} className="p-4">
                   <div className="australiaGuaranteesCard">
                     <div className="d-flex justify-content-center mt-3">
-                      <img src={c.images} alt="experience" />
+                      <img
+                        src={c?.image?.data?.attributes?.url}
+                        alt="experience"
+                      />
                     </div>
                     <p style={{ textAlign: "center", fontSize: "12px" }}>
-                      <strong>{c.title}</strong>
+                      <strong>{c?.title}</strong>
                     </p>
 
                     <p style={{ textAlign: "center", fontSize: "12px" }}>
-                      {c.data}
+                      {c?.paragraph && parse(c.paragraph)}
                     </p>
                   </div>
                 </Col>

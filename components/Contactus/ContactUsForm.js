@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import emailjs from "@emailjs/browser";
 
@@ -16,12 +15,12 @@ const ContactUsForm = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm(
-        "service_zd7zc21",
-        "template_h562t3q",
-        form.current,
-        "UD1lBl5a6755saSKU"
-      )
+    .sendForm(
+      "service_zd7zc21",
+      "template_h562t3q",
+      form.current,
+      "UD1lBl5a6755saSKU"
+    )
       .then(
         (result) => {
           alert("Email sent successfully!");
@@ -37,11 +36,7 @@ const ContactUsForm = () => {
       <Form ref={form} onSubmit={submitFormhandler} className="bg-white ">
         <Row>
           <Col xs={12} md={6}>
-            <Form.Group
-              className="mb-3"
-              controlId="fullName"
-              style={{ display: "none" }}
-            >
+          <Form.Group className="mb-3" controlId="fullName" style={{display:"none"}}>
               <Form.Control
                 placeholder="Site Name"
                 value="CDR For Engineer"
