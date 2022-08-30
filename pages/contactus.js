@@ -12,28 +12,28 @@ import FmdGoodRoundedIcon from "@mui/icons-material/FmdGoodRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { MonetizationOn } from "@mui/icons-material";
-
-const ContactUs = () => {
+import Seo from "../components/Seo";
+import parse from "html-react-parser";
+const ContactUs = ({ contactRes }) => {
   const router = useRouter();
   const canonicalUrl = (
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
+  const { hero, seo, shared } = contactRes;
 
   return (
     <Container>
-      <Head>
-        <title>Contact Us | CDR For Engineer</title>
-        <meta
-          name="description"
-          content="We are available 24 hours 7 days and you can reach to us through different medium like phone email  | CDR For Engineer"
-        />
-        <link rel="canonical" href={canonicalUrl} />
-      </Head>
-      <PurpleHeading title="Contact Us" />
+      {/* <Head>
+      <title>Contact Us | CDR For Engineer</title>
+      <meta name='description' content='We are available 24 hours 7 days and you can reach to us through different medium like phone email  | CDR For Engineer'/>
+      <link rel="canonical" href={canonicalUrl} />
+
+      </Head> */}
+      <Seo seo={seo} />
+      <PurpleHeading title={hero?.title} />
       <TextParagraph
-        content="Any questions or remarks? Feel free to contact us if you need any assistance or have any questions related to our service. "
+        content={hero?.paragraph && parse(hero.paragraph)}
         family="Arial"
         centerAlign
       />
@@ -65,17 +65,6 @@ const ContactUs = () => {
                     bottom: "-30px",
                     right: "-130px",
                     transform: "rotate(-45deg)",
-                  }}
-                ></div>
-                <div
-                  className="position-absolute contactUsDesignBubble"
-                  style={{
-                    height: "140px",
-                    width: "140px",
-                    background: "#7E53FA",
-                    borderRadius: "70px",
-                    bottom: "55px",
-                    right: "57px",
                   }}
                 ></div>
                 <h1
@@ -161,66 +150,38 @@ const ContactUs = () => {
                 </h1>
                 <Row>
                   <div className="d-flex flex-row my-2">
-                    <a
-                      href="https://www.facebook.com/cdrforengineer001"
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ textDecoration: "none", color: "white" }}
-                    >
-                      <FacebookOutlinedIcon
-                        style={{
-                          fontSize: "20px",
-                          color: "white",
-                          cursor: "pointer",
-                        }}
-                        className="me-2"
-                      />
-                    </a>
-                    <a
-                      href="https://twitter.com/"
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ textDecoration: "none", color: "white" }}
-                    >
-                      <TwitterIcon
-                        style={{
-                          fontSize: "20px",
-                          color: "white",
-                          cursor: "pointer",
-                        }}
-                        className="mx-2"
-                      />
-                    </a>
-                    <a
-                      href="https://www.instagram.com/cdrforengineer/"
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ textDecoration: "none", color: "white" }}
-                    >
-                      <InstagramIcon
-                        style={{
-                          fontSize: "20px",
-                          color: "white",
-                          cursor: "pointer",
-                        }}
-                        className="mx-2"
-                      />
-                    </a>
-                    <a
-                      href="https://www.facebook.com/cdrforengineer001"
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ textDecoration: "none", color: "white" }}
-                    >
-                      <LinkedInIcon
-                        style={{
-                          fontSize: "20px",
-                          color: "white",
-                          cursor: "pointer",
-                        }}
-                        className="mx-2"
-                      />
-                    </a>
+                    <FacebookOutlinedIcon
+                      style={{
+                        fontSize: "20px",
+                        color: "white",
+                        cursor: "pointer",
+                      }}
+                      className="me-3"
+                    />
+                    <TwitterIcon
+                      style={{
+                        fontSize: "20px",
+                        color: "white",
+                        cursor: "pointer",
+                      }}
+                      className="mx-3"
+                    />
+                    <InstagramIcon
+                      style={{
+                        fontSize: "20px",
+                        color: "white",
+                        cursor: "pointer",
+                      }}
+                      className="mx-3"
+                    />
+                    <LinkedInIcon
+                      style={{
+                        fontSize: "20px",
+                        color: "white",
+                        cursor: "pointer",
+                      }}
+                      className="mx-3"
+                    />
                   </div>
                 </Row>
               </Card>
@@ -232,7 +193,7 @@ const ContactUs = () => {
         </div>
       </div>
       <Row className="mb-5">
-        <PurpleHeading title="Stay connected with CDR For Engineer! Contact us via our Social Channels" />
+        <PurpleHeading title={shared?.data?.attributes?.title} />
         <Row className="mt-3 mb-5">
           <div className="d-flex justify-content-center align-items-center mb-4">
             <Button
@@ -245,15 +206,9 @@ const ContactUs = () => {
                 paddingLeft: "20px",
               }}
             >
-              <a
-                href="https://api.whatsapp.com/send?phone=61482070521"
-                target="_blank"
-                rel="noreferrer"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <WhatsAppIcon className="me-2" />
-                Whatsapp
-              </a>
+              {" "}
+              <WhatsAppIcon className="me-2" />
+              Whatsapp
             </Button>
             <Button
               className="mx-3"
@@ -280,6 +235,20 @@ const ContactUs = () => {
       </Row>
     </Container>
   );
+};
+
+export const getStaticProps = async () => {
+  const { NEXT_STRAPI_API_URL } = process.env;
+  const contact = await fetch(NEXT_STRAPI_API_URL + "contact?populate=deep");
+
+  const contactRes = await contact.json();
+
+  return {
+    props: {
+      contactRes: contactRes?.data?.attributes || "",
+    },
+    revalidate: 1,
+  };
 };
 
 export default ContactUs;
