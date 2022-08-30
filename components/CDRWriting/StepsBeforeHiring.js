@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
-
-const StepsBeforeHiring = () => {
+import parse from "html-react-parser";
+const StepsBeforeHiring = ({ data }) => {
   const cardContent = [
     {
       image: "/images/cardforaustralia.jpg",
@@ -27,20 +27,22 @@ const StepsBeforeHiring = () => {
       paragraph: `When it comes to the  migration of skilled engineers, every CDR report writing  service  providermust  be  conversant  with  the  immigration procedure  followed  by  the  Australian  government.  They  should  be awareof  the  immigration  process,  from  the  beginning  to  the  visa application and approval process.`,
     },
   ];
+  const { four, fourData } = data;
   return (
     <Container>
-      <PurpleHeading title="Four steps to consider before hiring a CDR Writer." />
+      <PurpleHeading title={four?.title} />
       <p className="cdrWritingP" style={{ textAlign: "center" }}>
-        Are you seeking for best CDR writing service provider? You must be aware
-        of following few things so that you get skills visa migration for
-        Australia.
+        {four?.paragraph && parse(four?.paragraph)}
       </p>
       <Row>
-        {cardContent.map((c, i) => (
-          <Col key={i} md={6} className="p-4">
+        {fourData.map((c, i) => (
+          <Col key={c.id} md={6} className="p-4">
             <div className="beforeHiringCard" style={{ height: "580px" }}>
               <Row className="h-35">
-                <img src={c.image} alt={c.name} />
+                <img
+                  src={c?.image?.data?.attributes?.url}
+                  alt={c?.image?.data?.attributes?.alternativeText}
+                />
               </Row>
               <Row className="h-65 px-3">
                 <h5
@@ -51,11 +53,11 @@ const StepsBeforeHiring = () => {
                     margin: "20px 0",
                   }}
                 >
-                  {c.title}
+                  {c?.title}
                 </h5>
-                <p className="cdrWritingP" style={{ textAlign: "center" }}>
-                  {c.paragraph}
-                </p>
+                <div className="cdrWritingP" style={{ textAlign: "center" }}>
+                  {c?.paragraph && parse(c.paragraph)}
+                </div>
               </Row>
             </div>
           </Col>
