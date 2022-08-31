@@ -13,7 +13,10 @@ const WhatIsCareerEpisode = ({ data }) => {
         content={what?.paragraph && parse(what.paragraph)}
       />
       <Row>
-        <img src={what?.image?.data?.attributes?.url} alt="few tips" />
+        <img
+          src={what?.image?.data?.attributes?.url}
+          alt={what?.image?.data?.attributes?.alternativeText}
+        />
       </Row>
 
       <PurpleHeading title="Career Episode Report writing service providerfor Engineers Australia." />
