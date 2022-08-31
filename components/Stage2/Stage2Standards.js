@@ -15,18 +15,13 @@ const Stage2Standards = ({ data }) => {
     "Identifying how emerging technologies apply to old ones",
     "Ensuring all the prices, limits, risks, are fully known about the results",
   ];
-  const { competencyData } = data;
+  const { competencyData, content3 } = data;
   return (
     <Container>
-      <PurpleHeading title="Stage 2 Competency Assessment standards for professional engineers" />
+      <PurpleHeading title={content3[3]?.title} />
       <TextParagraph
-        content="Stage 2 Competency  Assessment  standards are the profession’s expressionof  the knowledge and skill base, engineering capabilities, and professionals’skills,values,and attitudes that must mention topractice independently or unsupervised.As a professional engineer,you need to deliver various competencies according to your experience. Wheresome of the essentialparts of competencies are as given bellows"
         family="Arial"
-      />
-      <TextParagraph
-        content="As a professional engineer, you need to deliver various competencies according to your experience where some of the important parts of 
-        competencies are as given belows:"
-        family="Arial"
+        content={content3[3]?.paragraph && parse(content3[3].paragraph)}
       />
       <Row>
         {competencyData.map((c, i) => (

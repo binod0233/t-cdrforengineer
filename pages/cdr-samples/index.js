@@ -14,7 +14,7 @@ import parse from "html-react-parser";
 const Samples = ({ sampleRes }) => {
   const router = useRouter();
   console.log("sampleRes", sampleRes);
-  const { hero, sample, seo, shared, title, free } = sampleRes;
+  const { hero, sample, seo, shared, shareds_2, title, free } = sampleRes;
 
   const canonicalUrl = (
     `https://www.cdrforengineer.com` +
@@ -23,11 +23,6 @@ const Samples = ({ sampleRes }) => {
 
   return (
     <div>
-      {/* <Head>
-        <title>CDR Samples</title>
-        <meta name="description" content="Download cdr report samples" />
-        <link rel="canonical" href={canonicalUrl} />
-      </Head> */}
       <Seo seo={seo} />
       <Hero
         title={hero?.title}
@@ -44,10 +39,12 @@ const Samples = ({ sampleRes }) => {
       />
       <HighQualityCDRSamples />
       <CDRReportAccepted
-        title="CDR For Engineer is always Near to you for all Your CDR Report Queries."
+        title={shareds_2?.data?.attributes?.title}
+        data={
+          shareds_2?.data?.attributes?.paragraph &&
+          parse(shareds_2.data.attributes.paragraph)
+        }
         buttonName="Chat With Us"
-        data="CDR For Engineer is known as one of the Top and best CDR writing service provider in Australia. To get help, connect 
-        with us and we with our Expert Experienced CDR writers are always there to help you at any time."
       />
       <HowHelps data={sampleRes} />
       <WhyRely />
