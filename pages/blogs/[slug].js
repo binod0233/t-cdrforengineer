@@ -13,6 +13,7 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import moment from "moment";
+import Seo from "../../components/Seo";
 const SpecificBlog = ({ resBlogData, blogsRes }) => {
   const router = useRouter();
   const form = useRef();
@@ -27,7 +28,7 @@ const SpecificBlog = ({ resBlogData, blogsRes }) => {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
-  // console.log("canonicalUrl", blogsRes);
+  // console.log("blogsRes", resBlogData);
   const submitFormhandler = (e) => {
     e.preventDefault();
 
@@ -58,11 +59,12 @@ const SpecificBlog = ({ resBlogData, blogsRes }) => {
         <>Loading...</>
       ) : (
         <div>
-          <Head>
+          {/* <Head>
             <title>{id}</title>
             <meta name="description" content={id} />
             <link rel="canonical" href={canonicalUrl} />
-          </Head>
+          </Head> */}
+          <Seo seo={resBlogData?.attributes?.seo} />
           <div
             style={{
               background: `linear-gradient(
