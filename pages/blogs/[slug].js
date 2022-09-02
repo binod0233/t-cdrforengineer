@@ -1,10 +1,7 @@
 import React, { useRef, useState } from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { Container, Row, Col, Stack, Form, Button } from "react-bootstrap";
-import PurpleHeading from "../../components/PurpleHeading";
-import axios from "axios";
-import DesignBubble from "../../components/DesignBubble";
+
 import BlogCard from "../../components/Blog/BlogCard";
 import Link from "next/link";
 import parse from "html-react-parser";

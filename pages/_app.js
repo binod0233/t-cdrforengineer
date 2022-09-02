@@ -9,15 +9,8 @@ import Socials from "../components/Socials";
 import TakeMeToTop from "../components/TakeMeToTop";
 import TagManager from "react-gtm-module";
 import { SSRProvider } from "react-bootstrap";
-import Chatra from "@chatra/chatra";
-import Script from "next/script";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 let config = {

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 
 const Seo = ({ seo }) => {
   // const seo = { ...seo,seo.metaTitle, seo.metaDescription, seo.metaImage };
