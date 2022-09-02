@@ -11,7 +11,6 @@ const FAQ = ({ faqRes, faqDataRes }) => {
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   const { seo } = faqRes;
-  console.log(faqDataRes);
 
   const FAQFirstList = [
     {
@@ -124,7 +123,6 @@ export const getStaticProps = async () => {
       faqRes: faqRes?.data?.attributes,
       faqDataRes: faqDataRes?.data,
     },
-    revalidate: 1,
   };
 };
 

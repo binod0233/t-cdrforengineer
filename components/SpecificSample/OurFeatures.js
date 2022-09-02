@@ -53,7 +53,6 @@ const OurFeatures = () => {
           setPhone("");
         },
         (error) => {
-          console.log();
           alert("Sorry something went wrong.");
         }
       );

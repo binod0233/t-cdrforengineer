@@ -15,7 +15,6 @@ export default function Home({ landingRes }) {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
-  console.log(landingRes);
   const { hero, seo } = landingRes;
 
   return (
@@ -52,6 +51,5 @@ export const getStaticProps = async () => {
     props: {
       landingRes: landingRes?.data?.attributes || "",
     },
-    revalidate: 1,
   };
 };

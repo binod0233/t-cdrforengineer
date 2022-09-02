@@ -38,7 +38,6 @@ const Hero = ({ title, details }) => {
           setMessage("");
         },
         (error) => {
-          console.log(error);
           alert("Sorry something went wrong.");
         }
       );
@@ -91,7 +90,7 @@ const Hero = ({ title, details }) => {
                   style={{ textDecoration: "none", color: "white" }}
                   href="https://api.whatsapp.com/send?phone=61482070521"
                 >
-                  +61 482 072 510
+                  +61 482 070 521
                 </a>
               </p>
             </div>

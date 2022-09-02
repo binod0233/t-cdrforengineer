@@ -13,7 +13,6 @@ const ANZO = ({ fieldRes }) => {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
-  console.log(fieldRes);
   const field = router.query.field;
   const allData = {
     engineeringManager: {
@@ -12388,7 +12387,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { fieldRes: fieldRes || "" },
-    revalidate: 1,
   };
 }
 

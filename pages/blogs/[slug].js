@@ -20,7 +20,6 @@ const SpecificBlog = ({ resBlogData }) => {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
-  console.log("canonicalUrl", resBlogData);
   return (
     <>
       {router.isFallback ? (

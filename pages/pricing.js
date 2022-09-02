@@ -17,7 +17,6 @@ const Pricing = ({ pricingRes }) => {
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   const { hero, plan, seo, shared } = pricingRes;
-  console.log(pricingRes);
   return (
     <div>
       {/* <Head>
@@ -59,7 +58,6 @@ export const getStaticProps = async () => {
     props: {
       pricingRes: pricingRes?.data?.attributes,
     },
-    revalidate: 1,
   };
 };
 

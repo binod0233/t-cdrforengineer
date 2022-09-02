@@ -39,14 +39,12 @@ const getBlogs = async (key) => {
       `https://cdrskill.herokuapp.com/api/blogs?sort[0]=id&pagination[start]=${keyValue}&pagination[limit]=3&populate=deep`
     );
     const data = await res.json();
-    console.log();
     return data;
   }
   const res = await fetch(
     "https://cdrskill.herokuapp.com/api/blogs?sort[0]=id&pagination[start]=0&pagination[limit]=3&populate=deep"
   );
   const data = await res.json();
-  console.log();
   return data;
 };
 
@@ -67,7 +65,6 @@ const Blogs = ({ rdata }) => {
   });
   // const query = useQuery(['todos'], getBlogs)
   // const [data, setData] = useState([]);
-  console.log();
   let active = pData;
   let items = [];
   for (let number = 1; number <= 7; number++) {
@@ -84,7 +81,6 @@ const Blogs = ({ rdata }) => {
   }
 
   const handleTitle = (values) => {
-    console.log();
   };
 
   return (

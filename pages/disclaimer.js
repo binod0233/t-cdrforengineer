@@ -103,7 +103,6 @@ export const getStaticProps = async () => {
     props: {
       disclaimerRes: disclaimerRes?.data?.attributes || "",
     },
-    revalidate: 1,
   };
 };
 

@@ -127,7 +127,6 @@ export const getStaticProps = async () => {
     props: {
       refundRes: refundRes?.data?.attributes || "",
     },
-    revalidate: 1,
   };
 };
 

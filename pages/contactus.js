@@ -104,7 +104,7 @@ const ContactUs = ({ contactRes }) => {
                     className="me-3"
                     style={{ color: "#F8929D", fontSize: "22px" }}
                   />
-                  +61 482 072 510
+                  +61 482 070 521
                 </p>
 
                 <p
@@ -247,7 +247,6 @@ export const getStaticProps = async () => {
     props: {
       contactRes: contactRes?.data?.attributes || "",
     },
-    revalidate: 1,
   };
 };
 

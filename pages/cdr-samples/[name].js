@@ -4148,7 +4148,6 @@ CDR For Engineers offers free CDR Report samples on various Engineering occupati
     },
   };
   const resSampleData = sampleData?.data;
-  // console.log("sameple", sampleData);
 
   return (
     <div>
@@ -5175,7 +5174,6 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { sampleData: sampleData || "" },
-    revalidate: 1,
   };
 }
 

@@ -13,7 +13,6 @@ import parse from "html-react-parser";
 
 const Samples = ({ sampleRes }) => {
   const router = useRouter();
-  console.log("sampleRes", sampleRes);
   const { hero, sample, seo, shared, title, free } = sampleRes;
 
   const canonicalUrl = (
@@ -66,7 +65,6 @@ export async function getStaticProps({ params }) {
     props: {
       sampleRes: sampleRes?.data?.attributes || "",
     },
-    revalidate: 1,
   };
 }
 

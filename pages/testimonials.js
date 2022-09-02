@@ -290,7 +290,6 @@ const Testimonials = ({ testimonialRes }) => {
   ];
   const { hero, testimonial_data, seo } = testimonialRes;
 
-  console.log(testimonial_data);
   return (
     <div>
       {/* <Head>
@@ -426,7 +425,6 @@ export const getStaticProps = async () => {
     props: {
       testimonialRes: testimonialRes?.data?.attributes,
     },
-    revalidate: 1,
   };
 };
 

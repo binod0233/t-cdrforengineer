@@ -33,7 +33,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import moment from "moment";
 
 const getBlogs = async (key) => {
-  console.log("getBlogs", key);
   const { titleSlug, searchData } = key.queryKey[1];
   if (titleSlug) {
     //   titleSlug === 1 ? titleSlug : titleSlug * 3;
@@ -41,7 +40,6 @@ const getBlogs = async (key) => {
       `https://cdrskill.herokuapp.com/api/blogs?filters[title][$containsi]=${titleSlug}&pagination[start]=0&pagination[limit]=5`
     );
     const data = await res.json();
-    console.log("consssssssss", titleSlug);
     return data;
   }
   if (searchData) {
@@ -50,7 +48,6 @@ const getBlogs = async (key) => {
       `https://cdrskill.herokuapp.com/api/blogs?filters[title][$eq]=${searchData}`
     );
     const data = await res.json();
-    console.log("searchData", searchData);
     return data;
   }
 
@@ -58,7 +55,6 @@ const getBlogs = async (key) => {
   //     "https://cdrskill.herokuapp.com/api/blogs?populate=deep"
   //   );
   //   const data = await res.json();
-  //   console.log()
   //   return data;
   return null;
 };
@@ -81,9 +77,6 @@ const SearchBlogs = ({ rdata }) => {
       keepPreviousData: true,
     }
   );
-
-  console.log("title data", status);
-  console.log();
 
   return (
     <div>

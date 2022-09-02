@@ -41,14 +41,12 @@ const getBlogs = async (key) => {
       `https://cdrforengineer.herokuapp.com/api/blogs?populate=deep`
     );
     const data = await res.json();
-    console.log();
     return data;
   }
   const res = await fetch(
     "https://cdrforengineer.herokuapp.com/api/blogs?populate=deep"
   );
   const data = await res.json();
-  console.log();
   return data;
 };
 
@@ -65,7 +63,6 @@ const Blogs = ({ rdata }) => {
     initialData: rdata,
     keepPreviousData: true,
   });
-  console.log(checked);
   let active = pData;
   let items = [];
   for (let number = 1; number <= 4; number++) {

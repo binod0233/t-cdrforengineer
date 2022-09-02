@@ -35,7 +35,7 @@ const Footer = () => {
             href="https://api.whatsapp.com/send?phone=61482070521"
 
           >
-            +61 482 072 510
+            +61 482 070 521
           </a>
           <br />
           <strong className="text-center ms-3">Social Links</strong>
