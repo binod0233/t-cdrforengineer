@@ -18,13 +18,7 @@ import {
 
 import styles from "../../styles/Blog.module.css";
 
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import moment from "moment";
 import BlogCard from "../../components/Blog/BlogCard";
 import SearchIcon from "@mui/icons-material/Search";
@@ -350,9 +344,7 @@ const Blogs = ({ rdata }) => {
                 }
                 return (
                   <>
-                    <div key={item.id}>
-                      <BlogCard item={item} />
-                    </div>
+                    <BlogCard item={item} />
                   </>
                 );
               })}

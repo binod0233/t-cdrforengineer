@@ -6,7 +6,7 @@ import Link from "next/link";
 const BlogCard = ({ item }) => {
   return (
     <>
-      <div className="col  card-body-hover ">
+      <div className="col  card-body-hover " key={item?.id}>
         <div style={{ height: "100%" }}>
           <Ratio aspectRatio="21x9">
             <img
