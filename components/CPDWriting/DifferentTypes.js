@@ -1,13 +1,16 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
+import parse from "html-react-parser";
 
-const DifferentTypes = () => {
+const DifferentTypes = ({ data }) => {
+  const { what2, whatData } = data;
+
   return (
     <div style={{ background: "#F8FCFF" }}>
       <Container>
-        <PurpleHeading title="What are the different types of CPDfor Engineers Australia?" />
-        <p
+        <PurpleHeading title={what2[1]?.title} />
+        <div
           className="documentsForStageList"
           style={{
             color: "#666666",
@@ -15,13 +18,8 @@ const DifferentTypes = () => {
             fontFamily: "Arial",
           }}
         >
-          CPD Report writing for Engineers Australia is a crucial part of the
-          report. It is theprocess of keeping a tab on the level of your
-          skills,knowledge, and overall experience you have gained during your
-          learning period.Types of CPD learningvary significantly and also
-          includes different learning method. Let’sexplore the different types
-          of CPD for <strong>Engineers Australia:</strong>
-        </p>
+          {what2[1]?.paragraph && parse(what2[1].paragraph)}
+        </div>
         <div
           style={{
             display: "flex",
@@ -41,7 +39,7 @@ const DifferentTypes = () => {
                   fontWeight: "600",
                 }}
               >
-                Structured CPD{" "}
+                {whatData[0]?.title}
               </h5>
               <p
                 className="documentsForStageList my-3 my-md-2"
@@ -50,9 +48,7 @@ const DifferentTypes = () => {
                   fontFamily: "Century Gothic",
                 }}
               >
-                In a CPD Statement Writing structured CPD covers Aspects like
-                attending training courses, workshops, conferences, e-learning
-                courses, seminars, and CPD certified events.
+                {whatData[0]?.paragraph && parse(whatData[0].paragraph)}{" "}
               </p>
             </div>
           </div>
@@ -67,7 +63,7 @@ const DifferentTypes = () => {
                 }}
                 className="CPDCardHeading"
               >
-                Reflective CPD
+                {whatData[1]?.title}
               </h5>
               <p
                 className="documentsForStageList my-3 my-md-2"
@@ -76,10 +72,7 @@ const DifferentTypes = () => {
                   fontFamily: "Century Gothic",
                 }}
               >
-                Reflective CPD in CPD Statement Writing involves no
-                participant-based interactions, so this kind of Continue
-                professional development also known as CPD in CPD Report writing
-                for engineers Australia is more directional and passive.
+                {whatData[1]?.paragraph && parse(whatData[1].paragraph)}{" "}
               </p>
             </div>
           </div>
@@ -94,7 +87,7 @@ const DifferentTypes = () => {
                 }}
                 className="CPDCardHeading"
               >
-                Self-directed CPD
+                {whatData[2]?.title}
               </h5>
               <p
                 className="documentsForStageList my-3 my-md-2"
@@ -103,10 +96,7 @@ const DifferentTypes = () => {
                   fontFamily: "Century Gothic",
                 }}
               >
-                Self-directed CPD in CPD Report Writing covers all the
-                unaccompanied CPD activities. unaccompanied CPD activities
-                include the reading of documents, articles, and publications in
-                a print or online form.
+                {whatData[2]?.paragraph && parse(whatData[2].paragraph)}{" "}
               </p>
             </div>
           </div>

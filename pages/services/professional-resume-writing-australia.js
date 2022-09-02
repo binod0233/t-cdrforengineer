@@ -1,51 +1,61 @@
 import React from "react";
-import Head from 'next/head'
-import {useRouter} from 'next/router'
+import Head from "next/head";
+import { useRouter } from "next/router";
 import ResumeWriting from "../../components/CVResumeWriting.js/ResumeWriting";
 import CDRReportAccepted from "../../components/Home/CDRReportAccepted";
 import ThingsToConsider from "../../components/CVResumeWriting.js/ThingsToConsider";
 import GuideLines from "../../components/CVResumeWriting.js/GuideLines";
 import Hero from "../../components/Hero";
 import WhyCDR from "../../components/CVResumeWriting.js/WhyCDR";
+import Seo from "../../components/Seo";
+import parse from "html-react-parser";
 
-
-const CVResumeWriting = () => {
-  const router = useRouter()
-  const canonicalUrl = (`https://www.cdrforengineer.com` + (router.asPath === "/" ? "": router.asPath)).split("?")[0];
+const CVResumeWriting = ({ cvRes }) => {
+  const router = useRouter();
+  const canonicalUrl = (
+    `https://www.cdrforengineer.com` +
+    (router.asPath === "/" ? "" : router.asPath)
+  ).split("?")[0];
+  const { hero, shared, seo, shareds_2, content3 } = cvRes;
+  console.log(cvRes);
 
   return (
     <div>
-      <Head>
-        <title>professional CV-Resume Writing services for Engineers Australia.</title>
-        <meta name='description' content="Searching for Best cv-Resume Writing service provider in Australia? Our professional writers help you with Best Cv-Resume Report for Engineers Australia"/>
-        <link rel="canonical" href={canonicalUrl} />
+      <Seo seo={seo} />
+      <Hero title={hero?.title} details={hero && parse(hero.paragraph)} />
 
-      </Head>
-      <Hero
-        title="CV-Resume writing services for Engineers Australia"
-        details="Grab your High-Quality CV-Resume Report today from CDR For Engineer Professional Writers."
-      />
-      <ResumeWriting />
+      <ResumeWriting data={cvRes} />
       <CDRReportAccepted
-        title="We CDR For Engineer known for Best CV Resume Writing to help each field of Engineers get the 100 % Approval outcome. 
-"
-        data="Contact us today for the Best Quality CV Resume Writing"
+        title={shared?.data?.attributes?.title}
+        data={shared && parse(shared.data?.attributes?.paragraph)}
         buttonName="Contact Us"
         link="/contactus"
       />
-      <ThingsToConsider />
+      <ThingsToConsider data={content3[0]} />
       <CDRReportAccepted
-        title="Interested in our Top-notch Services? Have a look at our affordable prices."
-        data="We provide the best quality at the best and most affordable prices of CDR services under different 
-        packages. You can select any exclusive plan as per your needs and requirements."
+        title={shareds_2?.data?.attributes?.title}
+        data={shareds_2 && parse(shareds_2.data?.attributes?.paragraph)}
         buttonName="Check Pricing"
-                link="/pricing"
-
+        link="/pricing"
       />
-      <GuideLines />
-      <WhyCDR />
+      <GuideLines data={content3[1]} />
+      <WhyCDR data={content3[2]} />
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const { NEXT_STRAPI_API_URL } = process.env;
+
+  const cv = await fetch(NEXT_STRAPI_API_URL + "s-cv?populate=deep");
+  const cvRes = await cv.json();
+
+  return {
+    props: {
+      cvRes: cvRes?.data?.attributes || "",
+    },
+    revalidate: 1,
+  };
 };
 
 export default CVResumeWriting;

@@ -2,8 +2,8 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
 import TextParagraph from "../TextParagraph";
-
-const WhyChooseCdr = () => {
+import parse from "html-react-parser";
+const WhyChooseCdr = ({ data }) => {
   const cardItems = [
     {
       heading: `Have Trouble writing yourSummary statement report`,
@@ -24,21 +24,18 @@ const WhyChooseCdr = () => {
       image: "/images/affordablefees.jpg",
     },
   ];
+  const { why, whyData } = data;
   return (
     <div className="px-md-5 px-3" style={{}}>
       <Row className="px-md-5">
-        <PurpleHeading title="Why choose Cdr For Engineer Writers forSummary Statement Report Writing?" />
+        <PurpleHeading title={why?.title} />
         <TextParagraph
-          content="Do not worry you are at the right spot we care about all your Question marks want. We CDRforEngineer is known as the best and No 1 CDR writing service 
-          provider in Australia and we have our licensed professional writers from an engineering background who are always ready to help you with high-quality 
-          CDR Summary statement Report writing by following all the guidelines of EA mentioned in the MSA booklet. Our professional CDR writers are always 
-          near to you, can help you obtain a migration skill assessment visa by writing an original and flawless CDR Summary statement report before a deadline 
-          at very affordable prices for that you need to talk to our experts directly and you can get a free consultation response from them as well.      "
+          content={why?.paragraph && parse(why.paragraph)}
           familiy="Arial"
         />
       </Row>
       <Row className="px-5 ">
-        {cardItems.map((c, i) => (
+        {whyData.map((c, i) => (
           <Col md={3} className="px-3" key={i}>
             <Card className="whyChooseCdrCard mb-5">
               <div
@@ -47,7 +44,7 @@ const WhyChooseCdr = () => {
               >
                 <Row className="p-3">
                   <Col md={10}>
-                    <strong>{c.heading}</strong>
+                    <strong>{c?.title}</strong>
                   </Col>
                   <Col
                     md={1}
@@ -62,8 +59,8 @@ const WhyChooseCdr = () => {
               </div>
               <Row className="d-flex justify-content-center align-items-center p-5">
                 <img
-                  src={c.image}
-                  alt=""
+                  src={c?.image?.data?.attributes?.url}
+                  alt={c?.image?.data?.attributes?.alternativeText}
                   style={{ height: "200px", width: "200px" }}
                 />
               </Row>

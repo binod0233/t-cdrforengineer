@@ -2,10 +2,10 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
 import TextParagraph from "../TextParagraph";
-import CheckIcon from '@mui/icons-material/Check';
+import CheckIcon from "@mui/icons-material/Check";
 
-
-const ImportanceOfCPD = () => {
+const ImportanceOfCPD = ({ data }) => {
+  const { element } = data;
   return (
     <Container>
       <PurpleHeading title="What is the importance of CPD?" />
@@ -22,7 +22,10 @@ const ImportanceOfCPD = () => {
       </Row>
       <Row>
         <Col xs={1} md={1}>
-          <CheckIcon className="fa-solid fa-check mt-2" style={{ float: "right" }}/>
+          <CheckIcon
+            className="fa-solid fa-check mt-2"
+            style={{ float: "right" }}
+          />
         </Col>
         <Col xs={11} md={11}>
           <TextParagraph
@@ -33,7 +36,10 @@ const ImportanceOfCPD = () => {
       </Row>
       <Row>
         <Col xs={1} md={1}>
-          <CheckIcon className="fa-solid fa-check mt-2" style={{ float: "right" }}/>
+          <CheckIcon
+            className="fa-solid fa-check mt-2"
+            style={{ float: "right" }}
+          />
         </Col>
         <Col xs={11} md={11}>
           <TextParagraph
@@ -46,7 +52,10 @@ const ImportanceOfCPD = () => {
       </Row>
       <Row>
         <Col xs={1} md={1}>
-          <CheckIcon className="fa-solid fa-check mt-2" style={{ float: "right" }}/>
+          <CheckIcon
+            className="fa-solid fa-check mt-2"
+            style={{ float: "right" }}
+          />
         </Col>
         <Col xs={11} md={11}>
           <TextParagraph
@@ -58,7 +67,10 @@ const ImportanceOfCPD = () => {
       </Row>
       <Row>
         <Col xs={1} md={1}>
-          <CheckIcon className="fa-solid fa-check mt-2" style={{ float: "right" }}/>
+          <CheckIcon
+            className="fa-solid fa-check mt-2"
+            style={{ float: "right" }}
+          />
         </Col>
         <Col xs={11} md={11}>
           <TextParagraph
@@ -70,7 +82,10 @@ const ImportanceOfCPD = () => {
       </Row>
       <Row>
         <Col xs={1} md={1}>
-          <CheckIcon className="fa-solid fa-check mt-2" style={{ float: "right" }}/>
+          <CheckIcon
+            className="fa-solid fa-check mt-2"
+            style={{ float: "right" }}
+          />
         </Col>
         <Col xs={11} md={11}>
           <TextParagraph
@@ -81,7 +96,10 @@ const ImportanceOfCPD = () => {
       </Row>
       <Row>
         <Col xs={1} md={1}>
-          <CheckIcon className="fa-solid fa-check mt-2" style={{ float: "right" }}/>
+          <CheckIcon
+            className="fa-solid fa-check mt-2"
+            style={{ float: "right" }}
+          />
         </Col>
         <Col xs={11} md={11}>
           <TextParagraph
@@ -93,7 +111,10 @@ const ImportanceOfCPD = () => {
       </Row>
       <Row>
         <Col xs={1} md={1}>
-          <CheckIcon className="fa-solid fa-check mt-2" style={{ float: "right" }}/>
+          <CheckIcon
+            className="fa-solid fa-check mt-2"
+            style={{ float: "right" }}
+          />
         </Col>
         <Col xs={11} md={11}>
           <TextParagraph

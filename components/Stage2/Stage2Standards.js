@@ -2,8 +2,9 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
 import TextParagraph from "../TextParagraph";
+import parse from "html-react-parser";
 
-const Stage2Standards = () => {
+const Stage2Standards = ({ data }) => {
   const contentData = [
     "Understand all the requirements of the consumers, stakeholders, and society as whole",
     "Dedication and determination to expand all three aspects like economic, social, and environmental aspects",
@@ -14,21 +15,17 @@ const Stage2Standards = () => {
     "Identifying how emerging technologies apply to old ones",
     "Ensuring all the prices, limits, risks, are fully known about the results",
   ];
+  const { competencyData, content3 } = data;
   return (
     <Container>
-      <PurpleHeading title="Stage 2 Competency Assessment standards for professional engineers" />
+      <PurpleHeading title={content3[3]?.title} />
       <TextParagraph
-        content="Stage 2 Competency  Assessment  standards are the profession’s expressionof  the knowledge and skill base, engineering capabilities, and professionals’skills,values,and attitudes that must mention topractice independently or unsupervised.As a professional engineer,you need to deliver various competencies according to your experience. Wheresome of the essentialparts of competencies are as given bellows"
         family="Arial"
-      />
-      <TextParagraph
-        content="As a professional engineer, you need to deliver various competencies according to your experience where some of the important parts of 
-        competencies are as given belows:"
-        family="Arial"
+        content={content3[3]?.paragraph && parse(content3[3].paragraph)}
       />
       <Row>
-        {contentData.map((c,i) => (
-          <div key={i}>
+        {competencyData.map((c, i) => (
+          <div key={c.id}>
             <Col xs={1} md={1}>
               <div
                 style={{
@@ -58,7 +55,7 @@ const Stage2Standards = () => {
                   fontFamily: "Arial",
                 }}
               >
-                {c}
+                {c?.paragraph && parse(c.paragraph)}
               </p>
             </Col>
           </div>
