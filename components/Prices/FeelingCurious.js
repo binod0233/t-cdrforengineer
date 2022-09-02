@@ -28,7 +28,6 @@ const FeelingCurious = ({ data }) => {
             <a
               style={{ textDecoration: "none", color: "white" }}
               href="https://api.whatsapp.com/send?phone=61482070521"
-
             >
               Make a Call
             </a>

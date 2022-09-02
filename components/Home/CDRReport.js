@@ -4,7 +4,7 @@ import PurpleHeading from "../PurpleHeading";
 import TextParagraph from "../TextParagraph";
 import parse from "html-react-parser";
 const CDRReport = ({ data }) => {
-  const { positive } = data;
+  const { positive, paragraph1 } = data;
   const list = [
     { image: "/images/Home/3-career.png", title: "3 Career Episodes" },
     { image: "/images/Home/summary-statement.png", title: "Summary Statement" },
@@ -26,21 +26,11 @@ const CDRReport = ({ data }) => {
         </Col>
         <Col md={7}>
           <PurpleHeading title={positive?.title} />
-          <p
-            className="textParagraphP"
-            style={{
-              // color: "#666666",
-              // textAlign: centerAlign ? "center" : "justify",
-              fontSize: "18px",
-            }}
-          >
-            Engineers pursuing a career in Australia demonstrate their expertise
-            through CDR report in written form. To assess an engineer’s
-            proficiency in engineering skills and knowledge, management,
-            communication and leadership Engineers Australia uses a variety of
-            customized papers. CDR report for Engineers Australia consists of
-            three different documents namely:
-          </p>
+
+          <TextParagraph
+            family="Arial"
+            content={paragraph1 && parse(paragraph1)}
+          />
           <Row>
             {list.map((l, i) => (
               <Col key={i} md={6} className="p-2">

@@ -1,7 +1,7 @@
 import "../styles/Social.module.css";
 const TextParagraph = ({ centerAlign, family, content }) => {
   return (
-    <p
+    <div
       className="textParagraphP"
       style={{
         color: "#666666",
@@ -11,7 +11,7 @@ const TextParagraph = ({ centerAlign, family, content }) => {
       }}
     >
       {content}
-    </p>
+    </div>
   );
 };
 

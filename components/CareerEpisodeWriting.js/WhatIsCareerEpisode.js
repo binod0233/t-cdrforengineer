@@ -1,17 +1,22 @@
 import { Container, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
 import TextParagraph from "../TextParagraph";
+import parse from "html-react-parser";
 
-const WhatIsCareerEpisode = () => {
+const WhatIsCareerEpisode = ({ data }) => {
+  const { what, careerEpisode } = data;
   return (
     <Container>
-      <PurpleHeading title="What is career episode report writing?" />
+      <PurpleHeading title={what?.title} />
       <TextParagraph
         family="Arial"
-        content="Career Episode report is the vital element of the CDRrequired by Engineers Australia to check your engineering skills and knowledge.CDR offers three different career episodes, each important in showcasing your engineering skills and expertise to get approval from Engineers Australia(EA). Engineers Australia provides a structure for preparing your career episode in the Migration Skills Assessment Booklet(MSA)"
+        content={what?.paragraph && parse(what.paragraph)}
       />
       <Row>
-        <img src="/images/few-tips.jpg" alt="few tips" />
+        <img
+          src={what?.image?.data?.attributes?.url}
+          alt={what?.image?.data?.attributes?.alternativeText}
+        />
       </Row>
 
       <PurpleHeading title="Career Episode Report writing service providerfor Engineers Australia." />

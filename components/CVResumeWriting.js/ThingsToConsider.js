@@ -1,8 +1,10 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
+import parse from "html-react-parser";
+import TextParagraph from "../TextParagraph";
 
-const ThingsToConsider = () => {
+const ThingsToConsider = ({ data }) => {
   const contentList = [
     {
       title: "1. Personal Details ",
@@ -52,31 +54,11 @@ const ThingsToConsider = () => {
   ];
   return (
     <Container>
-      <PurpleHeading title="Things to consider while writing a best CDR CV Resume Report" />
-      <Row className="py-4">
-        {contentList.map((c,i) => (
-          <div key={i}>
-            <strong
-              className="thingsToConsiderTitle"
-              style={{
-                color: "#FA2545",
-                fontFamily: "Century Gothic",
-                fontWeight: "700",
-                fontSize: "18px",
-              }}
-            >
-              {c.title}
-            </strong>
-            <br />
-            <p
-              className="documentsForStageList"
-              style={{ marginLeft: "20px", fontSize: "20px" }}
-            >
-              {c.description}
-            </p>
-          </div>
-        ))}
-      </Row>
+      <PurpleHeading title={data?.title} />
+      <TextParagraph
+        family="Arial"
+        content={data?.paragraph && parse(data.paragraph)}
+      />
     </Container>
   );
 };

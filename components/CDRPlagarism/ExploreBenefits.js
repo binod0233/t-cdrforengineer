@@ -2,15 +2,13 @@ import React from "react";
 import { Container, Row } from "react-bootstrap";
 import PurpleHeading from "../PurpleHeading";
 
-const ExploreBenefits = () => {
+const ExploreBenefits = ({ data }) => {
   return (
     <Container>
-      <PurpleHeading
-        title=" Let’s explore some of the benefits you will obtain after relying on Trustworthy 
-Sevice provider for CDR Report Plagiarism Checking and Removal:"
-      />
+      <PurpleHeading title={data?.title} />
+
       <Row>
-        <img src="/images/explore-benefits.jpg" alt="explore benefits" />
+        <img src={data?.image?.data?.attributes?.url} alt="few tips" />
       </Row>
     </Container>
   );

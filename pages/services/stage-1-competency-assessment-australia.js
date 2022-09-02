@@ -1,60 +1,55 @@
 import React from "react";
-import Head from 'next/head'
-import {useRouter} from 'next/router'
+import Head from "next/head";
+import { useRouter } from "next/router";
 import CDRReportAccepted from "../../components/Home/CDRReportAccepted";
 import BestCdrWriting from "../../components/Stage1/BestCdrWriting";
 import CDRWants from "../../components/Stage1/CDRWants";
 import RelyOn from "../../components/Stage1/RelyOn";
 import WhyCdrExpertsForStage1 from "../../components/Stage1/WhyCdrExpertsForStage1";
 import Hero from "../../components/Hero";
+import Seo from "../../components/Seo";
+import parse from "html-react-parser";
 
-const Stage1CompetencyAssessment = () => {
-  const router = useRouter()
-  const canonicalUrl = (`https://www.cdrforengineer.com` + (router.asPath === "/" ? "": router.asPath)).split("?")[0];
+const Stage1CompetencyAssessment = ({ stage1Res }) => {
+  const router = useRouter();
+  const canonicalUrl = (
+    `https://www.cdrforengineer.com` +
+    (router.asPath === "/" ? "" : router.asPath)
+  ).split("?")[0];
+  console.log(stage1Res);
+  const { hero, why, whycdr, shared, seo } = stage1Res;
 
   return (
     <div>
-    
- <Head>
-        <title>Stage 1 Competency Assessment Help service provider in Australia</title>
-        <meta name='description' content="Are you ready to obtain 100 % Approval from Engineers Australia? Top leading service provider Helps you with High-Quality Stage 1 Competency Assessment."/>
-        <link rel="canonical" href={canonicalUrl} />
+      <Seo seo={seo} />
+      <Hero title={hero?.title} details={hero && parse(hero.paragraph)} />
 
-      </Head>
-      <Hero
-        title="Engineers Australia CDR Stage1
-Competency Assessment"
-        details="Grab our Top-notch services from professional writers for your 
-Stage 1 Competency Assessment Report."
-      />
-      <h1
-        className="stage1Heading"
-        style={{
-          fontSize: "34px",
-          fontFamily: "Cambria",
-          color: "#370C64",
-          fontWeight: "700",
-          marginTop: "50px",
-          padding: "0 100px",
-        }}
-      >
-        Stage 1 Competency Assessment
-      </h1>
-      <RelyOn />
+      <RelyOn data={stage1Res} />
       <CDRReportAccepted
-        title="We CDR For Engineer known for Best Quality CDR writing and reviewing service 
-agency strive to help each field of engineers get the 100 % Approval outcome. 
-"
-        data="Contact us today for the Best Quality consultation.
-"
+        title={shared?.data?.attributes?.title}
+        data={shared && parse(shared.data?.attributes?.paragraph)}
         buttonName="Contact Us"
         link="/contactus"
       />
-      <CDRWants />
-      <WhyCdrExpertsForStage1 />
-      <BestCdrWriting />
+      <CDRWants data={stage1Res} />
+      <WhyCdrExpertsForStage1 data={why} />
+      <BestCdrWriting data={whycdr} />
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const { NEXT_STRAPI_API_URL } = process.env;
+
+  const stage1 = await fetch(NEXT_STRAPI_API_URL + "s-stage1?populate=deep");
+  const stage1Res = await stage1.json();
+
+  return {
+    props: {
+      stage1Res: stage1Res?.data?.attributes || "",
+    },
+    revalidate: 1,
+  };
 };
 
 export default Stage1CompetencyAssessment;

@@ -36,8 +36,8 @@ const HowHelps = ({ data }) => {
         family="Arial"
       />
       <Row>
-        {/* {how.map((m, index) => (
-          <Col md={6} key={index} className="px-4 py-3">
+        {how_data.map((m, index) => (
+          <Col md={6} key={m?.id} className="px-4 py-3">
             <Row style={{ height: "100px" }}>
               <Col
                 xs={1}
@@ -50,7 +50,7 @@ const HowHelps = ({ data }) => {
                   fontSize: "20px",
                 }}
               >
-                {m.title}
+                0{index}
               </Col>
               <Col
                 xs={11}
@@ -58,11 +58,11 @@ const HowHelps = ({ data }) => {
                 className="d-flex justify-content-center align-items-center"
                 style={{ background: "#F4F4F4" }}
               >
-                {m.details}
+                {m?.paragraph && parse(m.paragraph)}
               </Col>
             </Row>
           </Col>
-        ))} */}
+        ))}
       </Row>
     </Container>
   );

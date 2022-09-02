@@ -6,7 +6,7 @@ import Chatra from "@chatra/chatra";
 import "../../styles/componentStyles.module.css";
 import parse from "html-react-parser";
 const GetYourCDR = ({ data }) => {
-  const { approval, steps } = data;
+  const { approval, steps, content } = data;
   return (
     <Container className="my-5">
       <Row>
@@ -44,12 +44,10 @@ const GetYourCDR = ({ data }) => {
             <Row className="p-3">
               <Col md={9} xs={9} style={{ fontSize: "13px" }}>
                 <strong style={{ color: "#370B63" }}>
-                  Best prices Guarantee
+                  {content[0]?.title}
                 </strong>
                 <br />
-                We Care about you so we provide quality services at very
-                reasonable prices and also, we are sure our offer cannot be
-                duplicated by any competitors.
+                {content[0]?.paragraph && parse(content[0].paragraph)}
               </Col>
               <Col md={3} xs={3}>
                 <div
@@ -61,7 +59,7 @@ const GetYourCDR = ({ data }) => {
                   }}
                 >
                   <img
-                    src="/images/Home/best-prices.png"
+                    src={content[0].image?.data?.attributes?.url}
                     alt="best prices guarantee"
                     style={{ height: "70%", objectFit: "contain" }}
                   />
@@ -82,11 +80,12 @@ const GetYourCDR = ({ data }) => {
           >
             <Row className="p-3">
               <Col md={9} xs={9} style={{ fontSize: "13px" }}>
-                <strong style={{ color: "#370B63" }}>On-time delivery</strong>
+                <strong style={{ color: "#370B63" }}>
+                  {" "}
+                  {content[1]?.title}
+                </strong>
                 <br />
-                We Care about you so we provide quality services at very
-                reasonable prices and also, we are sure our offer cannot be
-                duplicated by any competitors.
+                {content[1]?.paragraph && parse(content[1].paragraph)}
               </Col>
               <Col md={3} xs={3}>
                 <div
@@ -98,7 +97,7 @@ const GetYourCDR = ({ data }) => {
                   }}
                 >
                   <img
-                    src="/images/Home/on-time-delivery.png"
+                    src={content[1].image?.data?.attributes?.url}
                     alt="best prices guarantee"
                     style={{ height: "70%", objectFit: "contain" }}
                   />
@@ -118,11 +117,12 @@ const GetYourCDR = ({ data }) => {
           >
             <Row className="p-3">
               <Col md={9} xs={9} style={{ fontSize: "13px" }}>
-                <strong style={{ color: "#370B63" }}>Plagiarism Free</strong>
+                <strong style={{ color: "#370B63" }}>
+                  {" "}
+                  {content[2]?.title}
+                </strong>
                 <br />
-                We avoid duplication and error and provide concisely and quality
-                reports free from plagiarism. We properly revise and complete
-                your report before we deliver.
+                {content[2]?.paragraph && parse(content[2].paragraph)}
               </Col>
               <Col md={3} xs={3}>
                 <div
@@ -134,7 +134,7 @@ const GetYourCDR = ({ data }) => {
                   }}
                 >
                   <img
-                    src="/images/Home/plagarism-free.png"
+                    src={content[2].image?.data?.attributes?.url}
                     alt="best prices guarantee"
                     style={{ height: "70%", objectFit: "contain" }}
                   />

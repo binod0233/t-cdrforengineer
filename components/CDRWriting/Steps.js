@@ -4,7 +4,7 @@ import PurpleHeading from "../PurpleHeading";
 import DesignBubble from "../DesignBubble";
 import parse from "html-react-parser";
 
-const Steps = ({ tabItem, data }) => {
+const Steps = ({ tabItem, data, data2 }) => {
   const [activeElement, setActiveElement] = useState(
     tabItem ? tabItem[0]?.title : data[0]?.title
   );
@@ -150,7 +150,7 @@ const Steps = ({ tabItem, data }) => {
         {data && (
           <>
             {" "}
-            <PurpleHeading title="Steps in Preparation of CDR" colour />
+            <PurpleHeading title={"Steps in Preparation of CDR"} colour />
             <Row>
               {data &&
                 data.length > 0 &&
@@ -235,43 +235,9 @@ const Steps = ({ tabItem, data }) => {
                 </div>
               </div>
             </div>
-            {/* <Row className="mt-3 text-white stepsParagraph">
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[0]?.title &&
-                tabItem[0]?.extraContent}
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[1]?.title &&
-                tabItem[1]?.extraContent}
-
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[2]?.title &&
-                tabItem[2]?.extraContent}
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[3]?.title &&
-                tabItem[3]?.extraContent}
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[4]?.title &&
-                tabItem[4]?.extraContent}
-
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[5]?.title &&
-                tabItem[5]?.extraContent}
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[6]?.title &&
-                tabItem[6]?.extraContent}
-
-              {tabItem &&
-                tabItem.length > 0 &&
-                activeElement === tabItem[7]?.title &&
-                tabItem[7]?.extraContent}
-            </Row> */}
+            <Row className="mt-3 text-white stepsParagraph">
+              {data2?.paragraph && parse(data2.paragraph)}
+            </Row>
           </>
         )}
       </Container>

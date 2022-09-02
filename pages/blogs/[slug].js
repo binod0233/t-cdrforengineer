@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import Head from "next/head";
+import React, { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Container, Row, Col, Stack, Form, Button } from "react-bootstrap";
-import PurpleHeading from "../../components/PurpleHeading";
-import axios from "axios";
-import DesignBubble from "../../components/DesignBubble";
+
 import BlogCard from "../../components/Blog/BlogCard";
 import Link from "next/link";
 import parse from "html-react-parser";
@@ -12,25 +9,59 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
-const SpecificBlog = ({ resBlogData }) => {
+import moment from "moment";
+import Seo from "../../components/Seo";
+const SpecificBlog = ({ resBlogData, blogsRes }) => {
   const router = useRouter();
+  const form = useRef();
+
   const id = router.query.slug;
-  // const [data,setData] = useState(dat)
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
+
   const canonicalUrl = (
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
+  // console.log("blogsRes", resBlogData);
+  const submitFormhandler = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_zd7zc21",
+        "template_7rs4k0f",
+        form.current,
+        "UD1lBl5a6755saSKU"
+      )
+      .then(
+        (result) => {
+          alert("Email sent.");
+          setFullName("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+        },
+        (error) => {
+          console.log(error);
+          alert("Sorry something went wrong.");
+        }
+      );
+  };
   return (
     <>
       {router.isFallback ? (
         <>Loading...</>
       ) : (
         <div>
-          <Head>
+          {/* <Head>
             <title>{id}</title>
             <meta name="description" content={id} />
             <link rel="canonical" href={canonicalUrl} />
-          </Head>
+          </Head> */}
+          <Seo seo={resBlogData?.attributes?.seo} />
           <div
             style={{
               background: `linear-gradient(
@@ -45,7 +76,7 @@ const SpecificBlog = ({ resBlogData }) => {
             <div className="px-5 ">
               <Row>
                 <p className="mt-5  text-center text-md-start text-white">
-                  Home &gt; Blogs &gt; Australia Migration &gt;{" "}
+                  Home &gt; Blogs &gt; {resBlogData?.attributes?.category}
                   {/* <strong>{title}</strong> */}
                 </p>
               </Row>
@@ -53,10 +84,11 @@ const SpecificBlog = ({ resBlogData }) => {
           </div>
           <Container>
             {" "}
-            <div className="	d-none d-sm-block">
+            {/* <div className="	d-none d-sm-block"> */}
+            <div className="	">
               <Row className="py-4">
                 <img
-                  src="https://res.cloudinary.com/copenned/image/upload/v1658463629/BLOgs3_w1rhg4.png"
+                  src={resBlogData?.attributes?.image?.data?.attributes?.url}
                   className="order-sm-2 col-md-6"
                 />
                 <div className="order-sm-1 shadow-sm col-md-6 ">
@@ -72,7 +104,7 @@ const SpecificBlog = ({ resBlogData }) => {
                         color: "#370C64",
                       }}
                     >
-                      Australia Migration
+                      {resBlogData?.attributes?.category}
                     </p>
                     <p
                       className="card-text random"
@@ -97,11 +129,7 @@ const SpecificBlog = ({ resBlogData }) => {
                         color: "#666666",
                       }}
                     >
-                      Competency Demonstration Report (CDR) is an essential
-                      document that showcases your engineering skills and
-                      Knowledge to meet Australian standards. EA is the central
-                      authority that examines the CDR Report of Engineering
-                      Applicants.
+                      {resBlogData?.attributes?.description}
                     </p>
                     <div
                       className="d-flex justify-content-between align-items-center"
@@ -116,7 +144,7 @@ const SpecificBlog = ({ resBlogData }) => {
                     >
                       <small className="text-muted">
                         {" "}
-                        {/* {moment(item?.attributes?.createdAt).fromNow()} */}
+                        {moment(resBlogData?.attributes?.createdAt).fromNow()}
                       </small>
                       <Link href="/">
                         <button
@@ -209,7 +237,7 @@ const SpecificBlog = ({ resBlogData }) => {
                   </Row> */}
                     </Row>
                   </div>
-                  <h3>want to share</h3>
+                  <h3>Want to share</h3>
                   <div className="d-flex  flex justify-content-start  ">
                     <a
                       href="https://www.facebook.com/cdrforengineer001"
@@ -278,26 +306,24 @@ const SpecificBlog = ({ resBlogData }) => {
                       </Button>{" "}
                     </div>
                   </div>
-                  <h2>trending articles</h2>
-                  <Row>
-                    <p>Australia Migration</p>
-                    <p>Australia Migration Australia Migration</p>
-                    <hr className="bg-danger border-2 border-top border-danger" />
-                  </Row>
-                  <Row>
-                    <p>Australia Migration</p>
-                    <p>Australia Migration Australia Migration</p>
-                    <hr className="bg-danger border-2 border-top border-danger" />
-                  </Row>
-                  <Row>
-                    <p>Australia Migration</p>
-                    <p>Australia Migration Australia Migration</p>
-                    <hr className="bg-danger border-2 border-top border-danger" />
-                  </Row>
+                  <h2>Trending Articles</h2>
+                  {blogsRes &&
+                    blogsRes.slice(0, 3).map((item, index) => (
+                      <Row key={item?.id}>
+                        <p>{item?.attributes?.category}</p>
+                        <p>
+                          {item?.attributes?.description?.substring(0, 200)}..
+                        </p>
+                        <hr className="bg-danger border-2 border-top border-danger" />
+                      </Row>
+                    ))}
                   <h2>Read Next</h2>
-                  <BlogCard />
-                  <BlogCard />
-                  <BlogCard />
+                  {blogsRes &&
+                    blogsRes.slice(0, 3).map((item, index) => (
+                      <Row key={item?.id}>
+                        <BlogCard item={item} />
+                      </Row>
+                    ))}
                   <h2>Our Blog Categories</h2>
                   <div className="d-flex  flex justify-content-start  ">
                     <Button
@@ -341,31 +367,73 @@ const SpecificBlog = ({ resBlogData }) => {
                     </Button>{" "}
                   </div>
                   <h2>How Was the Blog</h2>
-                  <div className="d-flex    ">
-                    <Form.Control type="email" placeholder="Full Name" />
-
-                    <div className="px-2">
-                      <Form.Control type="email" placeholder="Email" />
-                    </div>
-                  </div>
-                  <div className="form-floating">
-                    <textarea
-                      className="form-control"
-                      placeholder="Leave a comment here"
-                      id="floatingTextarea"
-                    ></textarea>
-                    <label htmlFor="floatingTextarea">Comments</label>
-                  </div>
-                  <Button
-                    variant="danger"
-                    style={{
-                      alignSelf: "center",
-                      color: "white",
-                      width: "80%",
-                    }}
+                  <Form
+                    ref={form}
+                    onSubmit={submitFormhandler}
+                    // className="bg-white p-4 formContainer"
                   >
-                    Post Comment
-                  </Button>{" "}
+                    <Form.Group
+                      className="mb-3"
+                      controlId="sitename"
+                      style={{ display: "none" }}
+                    >
+                      <Form.Control
+                        placeholder="Site Name"
+                        value="CDR For Engineer"
+                        readOnly
+                        className="inputField"
+                        name="subject"
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="fullName">
+                      <Form.Control
+                        placeholder="Full Name"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        className="inputField"
+                        name="fullName"
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="email">
+                      <Form.Control
+                        type="text"
+                        placeholder="Email"
+                        value={email}
+                        className="inputField"
+                        onChange={(e) => setEmail(e.target.value)}
+                        name="email"
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="message">
+                      <Form.Control
+                        as="textarea"
+                        rows={6}
+                        placeholder="Your message"
+                        value={message}
+                        className="inputField"
+                        onChange={(e) => setMessage(e.target.value)}
+                        name="message"
+                      />
+                    </Form.Group>
+                    <Row className="d-flex align-items-center justify-content-center">
+                      <Button
+                        className="formSubmitButton"
+                        variant="danger"
+                        style={{
+                          alignSelf: "center",
+                          color: "white",
+                          width: "80%",
+                        }}
+                        type="submit"
+                      >
+                        Post Comment
+                      </Button>
+                    </Row>
+                  </Form>
+
                   <br />
                 </Stack>
               </Col>
@@ -403,9 +471,12 @@ const SpecificBlog = ({ resBlogData }) => {
             <div className="container">
               <h2 className="pb-5">Most-read Articles</h2>
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <BlogCard />
-                <BlogCard />
-                <BlogCard />
+                {blogsRes &&
+                  blogsRes.slice(0, 3).map((item, index) => (
+                    <div key={item?.id}>
+                      <BlogCard item={item} />
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
@@ -415,13 +486,6 @@ const SpecificBlog = ({ resBlogData }) => {
     </>
   );
 };
-// export async function getServerSideProps() {
-//   const res = await fetch(
-//     "https://cdrforengineer.herokuapp.com/api/blogs?sort[0]=id&pagination[start]=0&pagination[limit]=3&populate=deep"
-//   );
-//   const resdata = await res.json();
-//   return { props: { rdata: resdata } };
-// }
 
 export async function getStaticPaths() {
   const blog = await fetch("https://cdrforengineer.herokuapp.com/api/blogs");
@@ -447,7 +511,10 @@ export async function getStaticProps({ params }) {
   const blogDatas = await blogs.json();
 
   return {
-    props: { resBlogData: blogData?.data, resData: blogDatas?.data },
+    props: {
+      resBlogData: blogData?.data,
+      blogsRes: blogDatas?.data,
+    },
 
     revalidate: 1,
   };
