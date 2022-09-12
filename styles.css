@@ -61,9 +61,10 @@
 
 /* App js page */
 
-* body html {
-  margin: 0;
-  padding: 0;
+body {
+  overflow-x: hidden;
+  margin: 0rem;
+  padding: 0rem;
 }
 
 .contactUsFormLabel {
