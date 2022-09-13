@@ -13,6 +13,7 @@ const ANZO = ({ fieldRes }) => {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
+  console.log(fieldRes);
   const field = router.query.field;
   const allData = {
     engineeringManager: {
@@ -11483,118 +11484,116 @@ report writing."
       {field === "telecommunication-engineers-anzsco-263311" && (
         <>
           <ManagerEngineer
-            title={allData.telecommunicationsEngineer.managerEngineer.title}
+            title={allData.telecommunicationEngineer.managerEngineer.title}
             titleDescription={
-              allData.telecommunicationsEngineer.managerEngineer
-                .titleDescription
+              allData.telecommunicationEngineer.managerEngineer.titleDescription
             }
-            image={allData.telecommunicationsEngineer.managerEngineer.image}
+            image={allData.telecommunicationEngineer.managerEngineer.image}
             personnelTitle={
-              allData.telecommunicationsEngineer.managerEngineer.personnelTitle
+              allData.telecommunicationEngineer.managerEngineer.personnelTitle
             }
             personnelDetails={
-              allData.telecommunicationsEngineer.managerEngineer
-                .personnelDetails
+              allData.telecommunicationEngineer.managerEngineer.personnelDetails
             }
             skillText={
-              allData.telecommunicationsEngineer.managerEngineer.skillText
+              allData.telecommunicationEngineer.managerEngineer.skillText
             }
             averageTitle={
-              allData.telecommunicationsEngineer.managerEngineer.averageTitle
+              allData.telecommunicationEngineer.managerEngineer.averageTitle
             }
             averageDetails={
-              allData.telecommunicationsEngineer.managerEngineer.averageDetails
+              allData.telecommunicationEngineer.managerEngineer.averageDetails
             }
             jobDescription={
-              allData.telecommunicationsEngineer.managerEngineer.jobDescription
+              allData.telecommunicationEngineer.managerEngineer.jobDescription
             }
             smallTitle1={
-              allData.telecommunicationsEngineer.managerEngineer.smallTitle1
+              allData.telecommunicationEngineer.managerEngineer.smallTitle1
             }
             smallTitle1Details={
-              allData.telecommunicationsEngineer.managerEngineer
+              allData.telecommunicationEngineer.managerEngineer
                 .smallTitle1Details
             }
             smallTitle2={
-              allData.telecommunicationsEngineer.managerEngineer.smallTitle2
+              allData.telecommunicationEngineer.managerEngineer.smallTitle2
             }
             smallTitle2Details={
-              allData.telecommunicationsEngineer.managerEngineer
+              allData.telecommunicationEngineer.managerEngineer
                 .smallTitle2Details
             }
             smallTitle3={
-              allData.telecommunicationsEngineer.managerEngineer.smallTitle3
+              allData.telecommunicationEngineer.managerEngineer.smallTitle3
             }
-            tasks={allData.telecommunicationsEngineer.managerEngineer.tasks}
+            tasks={allData.telecommunicationEngineer.managerEngineer.tasks}
             specialization={
-              allData.telecommunicationsEngineer.managerEngineer.specialization
+              allData.telecommunicationEngineer.managerEngineer.specialization
             }
             specializationList={
-              allData.telecommunicationsEngineer.managerEngineer
+              allData.telecommunicationEngineer.managerEngineer
                 .specializationList
             }
           />
           <VisaOptions />
           <SponsorShipOptions
             NTHeading={
-              allData.telecommunicationsEngineer.sponsorShipData.NTHeading
+              allData.telecommunicationEngineer.sponsorShipData.NTHeading
             }
-            NTTick1={allData.telecommunicationsEngineer.sponsorShipData.NTTick1}
-            NTTick2={allData.telecommunicationsEngineer.sponsorShipData.NTTick2}
+            NTTick1={allData.telecommunicationEngineer.sponsorShipData.NTTick1}
+            NTTick2={allData.telecommunicationEngineer.sponsorShipData.NTTick2}
             NTParagraphs={
-              allData.telecommunicationsEngineer.sponsorShipData.NTParagraphs
+              allData.telecommunicationEngineer.sponsorShipData.NTParagraphs
             }
-            SATick1={allData.telecommunicationsEngineer.sponsorShipData.SATick1}
-            SATick2={allData.telecommunicationsEngineer.sponsorShipData.SATick2}
+            SATick1={allData.telecommunicationEngineer.sponsorShipData.SATick1}
+            SATick2={allData.telecommunicationEngineer.sponsorShipData.SATick2}
             SAParagraphs1={
-              allData.telecommunicationsEngineer.sponsorShipData.SAParagraphs1
+              allData.telecommunicationEngineer.sponsorShipData.SAParagraphs1
             }
             SAParagraphs2={
-              allData.telecommunicationsEngineer.sponsorShipData.SAParagraphs2
+              allData.telecommunicationEngineer.sponsorShipData.SAParagraphs2
             }
             SAParagraphsTick1={
-              allData.telecommunicationsEngineer.sponsorShipData
+              allData.telecommunicationEngineer.sponsorShipData
                 .SAParagraphsTick1
             }
             SAParagraphsTick2={
-              allData.telecommunicationsEngineer.sponsorShipData
+              allData.telecommunicationEngineer.sponsorShipData
                 .SAParagraphsTick2
             }
             VICHeading={
-              allData.telecommunicationsEngineer.sponsorShipData.VICHeading
+              allData.telecommunicationEngineer.sponsorShipData.VICHeading
             }
             VICParagraphs={
-              allData.telecommunicationsEngineer.sponsorShipData.VICParagraphs
+              allData.telecommunicationEngineer.sponsorShipData.VICParagraphs
             }
             WAParagraph={
-              allData.telecommunicationsEngineer.sponsorShipData.WAParagraph
+              allData.telecommunicationEngineer.sponsorShipData.WAParagraph
             }
             NSWHeading={
-              allData.telecommunicationsEngineer.sponsorShipData.NSWHeading
+              allData.telecommunicationEngineer.sponsorShipData.NSWHeading
             }
             NSWParagraph2={
-              allData.telecommunicationsEngineer.sponsorShipData.NSWParagraph2
+              allData.telecommunicationEngineer.sponsorShipData.NSWParagraph2
             }
             QLDHeading={
-              allData.telecommunicationsEngineer.sponsorShipData.QLDHeading
+              allData.telecommunicationEngineer.sponsorShipData.QLDHeading
             }
             QLDParagraphs={
-              allData.telecommunicationsEngineer.sponsorShipData.QLDParagraphs
+              allData.telecommunicationEngineer.sponsorShipData.QLDParagraphs
             }
             ACTTick1={
-              allData.telecommunicationsEngineer.sponsorShipData.ACTTick1
+              allData.telecommunicationEngineer.sponsorShipData.ACTTick1
             }
             ACTTick2={
-              allData.telecommunicationsEngineer.sponsorShipData.ACTTick2
+              allData.telecommunicationEngineer.sponsorShipData.ACTTick2
             }
             ACTParagraph1={
-              allData.telecommunicationsEngineer.sponsorShipData.ACTParagraph1
+              allData.telecommunicationEngineer.sponsorShipData.ACTParagraph1
             }
             TASParagraph1={
-              allData.telecommunicationsEngineer.sponsorShipData.TASParagraph1
+              allData.telecommunicationEngineer.sponsorShipData.TASParagraph1
             }
             TASParagraph2={
-              allData.telecommunicationsEngineer.sponsorShipData.TASParagraph2
+              allData.telecommunicationEngineer.sponsorShipData.TASParagraph2
             }
           />
 
@@ -12387,6 +12386,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { fieldRes: fieldRes || "" },
+    revalidate: 1,
   };
 }
 
