@@ -1,6 +1,5 @@
 import "../styles.css";
 import "bootstrap/dist/css/bootstrap.css";
-import Script from "next/script";
 
 import { useRef, useEffect } from "react";
 import Head from "next/head";
@@ -25,14 +24,14 @@ let config = {
   ID: "yu7tz9shLi6uZn26p",
 };
 
-// const tagManagerArgs = {
-//   gtmId: "GTM-MH9PVKT",
-// };
+const tagManagerArgs = {
+  gtmId: "GTM-KPSZLRR",
+};
 
 function MyApp({ Component, pageProps }) {
-  // useEffect(() => {
-  //   TagManager.initialize(tagManagerArgs);
-  // }, []);
+  useEffect(() => {
+    TagManager.initialize(tagManagerArgs);
+  }, []);
   const headScroll = useRef(null);
 
   const scrollToTop = () => {
@@ -99,17 +98,6 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-MPEC5G4G3T"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-        window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag(‘js’, new Date());
-  gtag(‘config’, ‘G-MPEC5G4G3T’);`}
-      </Script>
 
       <Header scrollToTop={scrollToTop} />
       <QueryClientProvider client={queryClient}>
