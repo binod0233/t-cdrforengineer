@@ -92,18 +92,6 @@ const FAQ = ({ faqRes, faqDataRes }) => {
   ];
   return (
     <div>
-      {/* <Head>
-        <title>FAQ | CDR For Engineer</title>
-        <meta name="description" content="FAQ | CDR For Engineer" />
-        <link rel="canonical" href={canonicalUrl} />
-      </Head> */}
-      {/* <Hero
-        title="Check our Excellent Pricing 
-on Various Services
-"
-        details="We provide CDR Writing Service at a very convenient and 
-valued price."
-      /> */}
       <Seo seo={seo} />
       <FrequentlyAsked data={faqDataRes} />
       <StillHave />
