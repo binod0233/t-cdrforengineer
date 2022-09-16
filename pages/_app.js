@@ -13,24 +13,15 @@ import { SSRProvider } from "react-bootstrap";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
-let config = {
-  setup: {
-    buttonSize: 75,
-    colors: {
-      buttonText: "#fff",
-      buttonBg: "#753CAD",
-    },
-  },
-  ID: "yu7tz9shLi6uZn26p",
-};
 
-const tagManagerArgs = {
-  gtmId: "GTM-KPSZLRR",
-};
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    TagManager.initialize(tagManagerArgs);
+    function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({‘gtm.start’:
+new Date().getTime(),event:‘gtm.js’});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!=‘dataLayer’?‘&l=‘+l:‘’;j.async=true;j.src=
+’https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,‘script’,‘dataLayer’,‘GTM-KPSZLRR’)
   }, []);
   const headScroll = useRef(null);
 
@@ -77,8 +68,7 @@ function MyApp({ Component, pageProps }) {
       };
       !n.__lc.asyncInit && e.init(), (n.LiveChatWidget = n.LiveChatWidget || e);
     })(window, document, [].slice);
-    //     Chatra("init", config);
-    // Chatra("pageView");
+
   }, []);
   return (
     <SSRProvider>
@@ -93,10 +83,7 @@ function MyApp({ Component, pageProps }) {
           name="google-site-verification"
           content="KceQ_VgcoIBknsBsN-hHU5QZSLifvhWogYHgEZQYtzo"
         />
-        <link
-          href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-          rel="stylesheet"
-        />
+        
       </Head>
 
       <Header scrollToTop={scrollToTop} />
