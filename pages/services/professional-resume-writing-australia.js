@@ -17,7 +17,6 @@ const CVResumeWriting = ({ cvRes }) => {
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   const { hero, shared, seo, shareds_2, content3 } = cvRes;
-  console.log(cvRes);
 
   return (
     <div>

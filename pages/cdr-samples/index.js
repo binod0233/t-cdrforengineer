@@ -13,7 +13,6 @@ import parse from "html-react-parser";
 
 const Samples = ({ sampleRes }) => {
   const router = useRouter();
-  console.log("sampleRes", sampleRes);
   const { hero, sample, seo, shared, shareds_2, title, free } = sampleRes;
 
   const canonicalUrl = (

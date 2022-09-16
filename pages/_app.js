@@ -23,7 +23,7 @@ let config = {
   },
   ID: "yu7tz9shLi6uZn26p",
 };
-
+ 
 const tagManagerArgs = {
   gtmId: "GTM-MH9PVKT",
 };
@@ -93,10 +93,7 @@ function MyApp({ Component, pageProps }) {
           name="google-site-verification"
           content="KceQ_VgcoIBknsBsN-hHU5QZSLifvhWogYHgEZQYtzo"
         />
-        <link
-          href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-          rel="stylesheet"
-        />
+        
       </Head>
 
       <Header scrollToTop={scrollToTop} />

@@ -17,7 +17,6 @@ const SummaryEpisodeWriting = ({ summaryRes }) => {
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   const { hero, shared, seo } = summaryRes;
-  console.log("summaryRes", summaryRes);
 
   return (
     <div>

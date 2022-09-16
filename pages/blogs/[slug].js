@@ -25,7 +25,6 @@ const SpecificBlog = ({ resBlogData, blogsRes }) => {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
-  // console.log("blogsRes", resBlogData);
   const submitFormhandler = (e) => {
     e.preventDefault();
 
@@ -45,7 +44,6 @@ const SpecificBlog = ({ resBlogData, blogsRes }) => {
           setMessage("");
         },
         (error) => {
-          console.log(error);
           alert("Sorry something went wrong.");
         }
       );

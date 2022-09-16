@@ -18,7 +18,6 @@ const CDRReviewing = ({ reviewingRes }) => {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
-  // console.log("reviewingRes", reviewingRes);
   const { hero, cdr, what, steps, stepsData, shared, seo } = reviewingRes;
   return (
     <div>

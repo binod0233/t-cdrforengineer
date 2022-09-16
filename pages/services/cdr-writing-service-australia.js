@@ -19,7 +19,6 @@ const CDRWriting = ({ cdrRes }) => {
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   const { hero, shared, stepsData, seo } = cdrRes;
-  console.log("cdrRes", cdrRes);
 
   return (
     <>

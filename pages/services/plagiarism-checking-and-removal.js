@@ -15,7 +15,6 @@ const CDRPlagarismCheckingAndRemoval = ({ plagiarismRes }) => {
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   const { hero, lets, stepsData, shared, seo } = plagiarismRes;
-  console.log(plagiarismRes);
 
   return (
     <div>

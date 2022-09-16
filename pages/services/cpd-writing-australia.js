@@ -19,7 +19,6 @@ const CPDWriting = ({ cpdRes }) => {
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
   const { hero, how, steps, stepsData, shared, shareds_2, seo } = cpdRes;
-  console.log(cpdRes);
   return (
     <div>
       <Seo seo={seo} />

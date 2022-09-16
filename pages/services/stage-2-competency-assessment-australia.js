@@ -17,7 +17,6 @@ const Stage2CompetencyAssessment = ({ stage2Res }) => {
     `https://www.cdrforengineer.com` +
     (router.asPath === "/" ? "" : router.asPath)
   ).split("?")[0];
-  // console.log(stage2Res);
   const { hero, content3, trust, seo, shared, shared2 } = stage2Res;
 
   return (
