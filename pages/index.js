@@ -35,7 +35,7 @@ export const getStaticProps = async () => {
 
   const landing = await fetch(NEXT_STRAPI_API_URL + "landing?populate=deep");
 
-  const landingRes = await landing.json();
+  const landingRes =  landing?.json();
 
   return {
     props: {

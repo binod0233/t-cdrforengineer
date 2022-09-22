@@ -28,9 +28,7 @@ const getBlogs = async (key) => {
   const keyValue = key.queryKey[1].titleSlug;
   if (keyValue) {
     keyValue === 1 ? keyValue : keyValue * 3;
-    // const res = await fetch(
-    //   `https://cdrforengineer.herokuapp.com/api/blogs?sort[0]=id&pagination[start]=${keyValue}&pagination[limit]=6&populate=deep`
-    // );
+    
     const res = await fetch(
       `https://cdrforengineer.herokuapp.com/api/blogs?populate=deep`
     );

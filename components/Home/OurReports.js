@@ -10,7 +10,7 @@ const OurReports = ({ data }) => {
     <Container>
       <PurpleHeading title={title} />
       <Row className="my-2 my-md-5">
-        {trackRecord.map((item, index) => (
+        {trackRecord?.map((item, index) => (
           <Col key={index} md={4} sm={12} className="p-3 my-md-5 my-3">
             <div
               style={{

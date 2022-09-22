@@ -19,8 +19,8 @@ const CDRReport = ({ data }) => {
       <Row>
         <Col md={5}>
           <img
-            src={positive.image?.data?.attributes?.url}
-            alt={positive.image?.data?.attributes?.alternativeText}
+            src={positive?.image?.data?.attributes?.url}
+            alt={positive?.image?.data?.attributes?.alternativeText}
             className="img-fluid"
           />
         </Col>

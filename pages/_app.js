@@ -1,34 +1,32 @@
 import "../styles.css";
 import "bootstrap/dist/css/bootstrap.css";
-
+import TagManager from 'react-gtm-module'
 import { useRef, useEffect } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Socials from "../components/Socials";
 import TakeMeToTop from "../components/TakeMeToTop";
-import TagManager from "react-gtm-module";
 import { SSRProvider } from "react-bootstrap";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 
- 
-const tagManagerArgs = {
-  gtmId: "GTM-MH9PVKT",
-};
-
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    TagManager.initialize(tagManagerArgs);
-  }, []);
+ 
   const headScroll = useRef(null);
 
   const scrollToTop = () => {
     headScroll.current.scrollIntoView();
   };
+
+  const tagManagerArgs = {
+    gtmId: 'GTM-000000'
+}
+
   useEffect(() => {
+    TagManager.initialize(tagManagerArgs)
     window.__lc = window.__lc || {};
     window.__lc.license = 14286585;
     (function (n, t, c) {
@@ -70,6 +68,21 @@ function MyApp({ Component, pageProps }) {
     })(window, document, [].slice);
 
   }, []);
+
+  useEffect(()=>{
+
+    (
+      function(w,d,s,l,i){w[l]=w[l]||[];
+        w[l].push({'gtm.start':new Date().getTime(),
+                    event:'gtm.js'
+                  });
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KPSZLRR')
+  
+  },[])
   return (
     <SSRProvider>
       <div ref={headScroll}></div>
@@ -85,20 +98,7 @@ function MyApp({ Component, pageProps }) {
         />
         
       </Head>
-       <Script id="google-tag-manager" strategy="afterInteractive">
-        
-        {(
-          function(w,d,s,l,i){w[l]=w[l]||[];
-            w[l].push({'gtm.start':new Date().getTime(),
-                        event:'gtm.js'
-                      });
-            var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-            j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-            f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KPSZLRR')
-      }
-      </Script>
+       
 
       <Header scrollToTop={scrollToTop} />
       <QueryClientProvider client={queryClient}>
