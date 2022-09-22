@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
   };
 
   const tagManagerArgs = {
-    gtmId: 'GTM-000000'
+    gtmId: 'GTM-KPSZLRR'
 }
 
   useEffect(() => {

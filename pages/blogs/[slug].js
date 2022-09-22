@@ -486,7 +486,7 @@ const SpecificBlog = ({ resBlogData, blogsRes }) => {
 };
 
 export async function getStaticPaths() {
-  const blog = await fetch("https://cdrforengineer.herokuapp.com/api/blogs");
+  const blog = await fetch("https://cdrforengineers.herokuapp.com/api/blogs");
   const allBlogs = await blog.json();
   return {
     paths: allBlogs.data.map((blog) => ({
@@ -500,11 +500,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const blog = await fetch(
-    `https://cdrforengineer.herokuapp.com/api/blogs/${params.slug}?populate=deep`
+    `https://cdrforengineers.herokuapp.com/api/blogs/${params.slug}?populate=deep`
   );
   const blogData = await blog.json();
   const blogs = await fetch(
-    `https://cdrforengineer.herokuapp.com/api/blogs?populate=deep`
+    `https://cdrforengineers.herokuapp.com/api/blogs?populate=deep`
   );
   const blogDatas = await blogs.json();
 

@@ -30,13 +30,13 @@ const getBlogs = async (key) => {
     keyValue === 1 ? keyValue : keyValue * 3;
     
     const res = await fetch(
-      `https://cdrforengineer.herokuapp.com/api/blogs?populate=deep`
+      `https://cdrforengineers.herokuapp.com/api/blogs?populate=deep`
     );
     const data = await res.json();
     return data;
   }
   const res = await fetch(
-    "https://cdrforengineer.herokuapp.com/api/blogs?populate=deep"
+    "https://cdrforengineers.herokuapp.com/api/blogs?populate=deep"
   );
   const data = await res.json();
   return data;
@@ -423,7 +423,7 @@ const Blogs = ({ rdata }) => {
 
 export async function getStaticProps() {
   const res = await fetch(
-    "https://cdrforengineer.herokuapp.com/api/blogs?sort[0]=id&pagination[start]=0&pagination[limit]=20&populate=deep"
+    "https://cdrforengineers.herokuapp.com/api/blogs?sort[0]=id&pagination[start]=0&pagination[limit]=20&populate=deep"
   );
   const resdata = await res.json();
   return { props: { rdata: resdata } };
