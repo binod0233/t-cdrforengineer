@@ -12,7 +12,7 @@ const EngineersTakeHelp = ({ data }) => {
       <PurpleHeading title={reports_title} />
       <TextParagraph content={paragraph2 && parse(paragraph2)} />
       <Row>
-        {steps.map((item, i) => (
+        {steps?.map((item, i) => (
           <Col md={3} xs={12} key={i} style={{ paddingRight: "5px" }}>
             <div style={{ background: "#E5E5E5" }}>
               <div
