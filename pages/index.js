@@ -8,6 +8,7 @@ import Hero from "../components/Hero";
 import { useRouter } from "next/router";
 import Seo from "../components/Seo";
 import parse from "html-react-parser";
+import { ArrowBackIosTwoTone } from "@mui/icons-material";
 
 export default function Home({ landingRes }) {
   
@@ -35,7 +36,7 @@ export const getStaticProps = async () => {
 
   const landing = await fetch(NEXT_STRAPI_API_URL + "landing?populate=deep");
 
-  const landingRes =  landing?.json();
+  const landingRes = await landing?.json();
 
   return {
     props: {
