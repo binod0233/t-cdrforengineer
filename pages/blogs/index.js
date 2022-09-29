@@ -426,7 +426,8 @@ export async function getStaticProps() {
     "https://cdrforengineers.herokuapp.com/api/blogs?sort[0]=id&pagination[start]=0&pagination[limit]=20&populate=deep"
   );
   const resdata = await res.json();
-  return { props: { rdata: resdata } };
+  return { props: { rdata: resdata } ,    revalidate: 1,
+};
 }
 
 export default Blogs;
