@@ -72,16 +72,7 @@ const Blogs = ({ rdata }) => {
 
   return (
     <div>
-      <>
-        {/* <Head>
-          <title>Blogs | CDR For Engineer</title>
-          <meta
-            name="description"
-            content="Articles on and about cdr with cdrforengineer | CDR For Engineer"
-          />
-          <link rel="canonical" href={canonicalUrl} />
-        </Head> */}
-      </>
+    
 
       <div
         style={{
